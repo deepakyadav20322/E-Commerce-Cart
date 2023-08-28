@@ -13,10 +13,10 @@ const HomeProducts = () => {
             console.log('jjjjjjjjjjjj')
          
             useEffect(() => {
-                
+                dispatch(fetchProducts());
+                console.log("klklkl",data)
                 return ()=>{
-                    dispatch(fetchProducts());
-                    console.log("klklkl",data)
+                  
                 }
              
             }, []);
