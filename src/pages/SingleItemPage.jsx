@@ -2,7 +2,7 @@ import {useState} from "react";
 import Navbar from "../components/Navbar";
 import { useLocation } from "react-router-dom";
 import StarRating from "../components/StarRating";
-import SinglePageSlider from "../components/SInglePageSlider";
+
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdOutlineSecurity, MdVerified } from "react-icons/md";
 import { BsFillCircleFill } from "react-icons/bs";
