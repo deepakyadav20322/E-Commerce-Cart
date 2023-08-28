@@ -5,7 +5,7 @@ import ProductList from './ProductList';
 import { fetchProducts,fetchProductsByCategory } from '../store/productSlice';
 import { fetchCategory } from '../store/categorySlice';
 
-const HomeProducts = memo(() => {
+const HomeProducts = () => {
     // const [items,setItems] = useState();
     const dispatch = useDispatch();
     const { data, status } = useSelector((state) => state.product);
@@ -106,6 +106,6 @@ const HomeProducts = memo(() => {
     
 
   )
-})
+}
 
 export default HomeProducts
