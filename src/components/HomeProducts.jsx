@@ -31,7 +31,7 @@ const HomeProducts = () => {
     }
 
     if (status === STATUSES.ERROR) {
-        return <h2>Something went wrong!</h2>;
+        return <h2 className='text-center mt-5'>Something went wrong! , Please refresh the website.</h2>;
     }
 
   return (
