@@ -193,6 +193,9 @@
   .cartImg{
        margin-left: 50px;
   }
+  .singlePage-btn {
+    padding-bottom: 1.2rem;
+  }
 }
 @media screen and (max-width:350px) {
   .cartImg{

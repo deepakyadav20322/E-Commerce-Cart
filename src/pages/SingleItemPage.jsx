@@ -142,7 +142,7 @@ const SingleItemPage = () => {
                 />
               </span>
             </div>
-            <div className="singlePage-btn flex flex-row gap-10 mt-3 font-[500]">
+            <div className="singlePage-btn  flex flex-row gap-10 mt-3 font-[500]">
               <button className="px-8 py-2 bg-[#2874F0] text-white"
                onClick={()=>handleAdd(itemData)}
               >
