@@ -1,5 +1,5 @@
-
-- [Live preview ](https://web-cart-app.netlify.app/) 
+#Go to Live view by below link -
+- [https://web-cart-app.netlify.app/ ](https://web-cart-app.netlify.app/) 
 
 # React + Vite
 
