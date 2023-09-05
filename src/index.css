@@ -107,10 +107,24 @@
 
   height: 450px;
 }
+
 .checkout{
     position: sticky;
     top:50px;
    }   
+
+.payout-POPUP{
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0, 0.645);
+}
+
 
 
   @media screen and (max-width:450px) {
@@ -145,6 +159,11 @@
     overflow-x: scroll;
     
   }
+}
+
+.selectedImgDesign {
+  border:2px solid blue; /* Change to your desired border color */
+  border-radius:4px ;
 }
 
 @media screen and (max-width: 410px) {

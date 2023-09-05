@@ -41,20 +41,25 @@ const Products = () => {
     <>
     <Navbar/>
     <CategoryList />
-    <div className='w-full max-w-[1280px] m-auto mt-14'>
-    <h2 className='ml-14 font-[700] text-[20px]'>{category} Products</h2>
+    <div className='w-full max-w-[1450px] m-auto mt-14 '>
+    
+    
+    <h2 className='ml-14 font-[700] text-[20px] capitalize'>{category} Products</h2>
+    
     <div className='flex justify-center items-center flex-row flex-wrap'>
+   
     { category=="" || category=='All' ? 
           data.map((item,id)=>(
             
-          
+           
          <div key={id} className="card flex justify-center items-center flex-col mx-5 my-3">
-            <Link to={'/singleItemInfo'} state= {{itemData:item }} // Pass the item data as state
-            >
+            <Link to={'/singleItemInfo'} state= {{itemData:item }}> 
+            {/* // Pass the item data as state */}
+         
             <div className='imgBox'>
-            <img src={item.thumbnail} className='mt-5' alt="" />
+            <img src={item.thumbnail} className='mt-5  hover:scale-[1.2] transition-all duration-[400ms]' alt="" />
             </div>
-            </Link>
+             </Link>
             <p className='productName'>{item.title}</p>
             <div className="content  flex justify-between items-center flex-row w-full p-5 ">
                 <div className='flex flex-col items-center'>
@@ -67,7 +72,7 @@ const Products = () => {
             </div>
            
         </div>
-      
+       
     
 
      ))
@@ -77,7 +82,7 @@ const Products = () => {
         <Link to={'/singleItemInfo'} state= {{itemData:item }} // Pass the item data as state
         >
         <div className='imgBox'>
-        <img src={item.thumbnail} className='mt-5' alt="" />
+        <img src={item.thumbnail} className='mt-5  hover:scale-[1.2] transition-all duration-[400ms]' alt="" />
         </div>
         </Link>
         <p className='productName'>{item.title}</p>
@@ -94,8 +99,9 @@ const Products = () => {
       ))
     }
     </div>
-    <Toaster/>
     </div>
+    <Toaster/>
+   
     </>
   )
 }

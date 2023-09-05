@@ -11,19 +11,29 @@ import { addToCart } from "../store/cartSlice";
 import { Toaster,toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 
+
 const SingleItemPage = () => {
     const {data}=useSelector((state)=>state.cart);
   const location = useLocation();
   const [qty,setQty] = useState(1);
   const dispatch = useDispatch();
+  const [currentImg,setCurrentImg]=useState('')
+  const [selectedImage, setSelectedImage] = useState(null);
+  
+function handleClickImg(e,idx){
+ console.log(idx)
+  setCurrentImg(e.target.src)
+  setSelectedImage(idx);
+
+}
 
   // Access the itemData from location.state
   const itemData = location.state?.itemData;
-  console.log(location.state,"fffffffyyyyyy");
+  // console.log(location.state,"fffffffyyyyyy");
   const handleAdd = (product) => {
     const dataAvailable = data.some(item => item.id === product.id);
 
-       console.log(dataAvailable)
+      //  console.log(dataAvailable)
        if(dataAvailable){
         toast.success("Item already in cart");
         return ;
@@ -47,16 +57,17 @@ const SingleItemPage = () => {
             {/* <SinglePageSlider AllImg={(itemData?.images)} /> */}
             <img
               className="h-[300px] w-[300px] object-cover"
-              src={itemData.thumbnail}
+              src={currentImg==""?itemData.thumbnail:currentImg}
               alt=""
             />
             <div className="flex flex-row gap-4 my-2">
               {itemData.images.slice(0, 4).map((img, idx) => (
-                <div key={idx} className="extraImg border-2">
+                <div key={idx} className={`extraImg border-2 ${selectedImage === idx ? 'selectedImgDesign' : ''}`}>
                   <img
-                    className="w-[100px] h-[100px] object-cover"
+                    className={`w-[100px] h-[100px] object-cover cursor-pointer p-2 `}
                     src={img}
                     alt="extraImg"
+                    onClick={(e)=>(handleClickImg(e,idx))}
                   />
                 </div>
               ))}

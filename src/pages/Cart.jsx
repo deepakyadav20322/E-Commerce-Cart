@@ -1,15 +1,18 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useSelector,useDispatch} from "react-redux";
-import {AiFillCloseCircle} from 'react-icons/ai'
+import {AiFillCheckCircle, AiFillCloseCircle} from 'react-icons/ai'
 import { removeFromCart ,toggleCartQty,getCartTotal} from "../store/cartSlice";
 import emptyCartImg from '../assets/images/emptyCartImg.webp'
 
 
+
 const Cart = () => {
-    const dispatch = useDispatch();
+  
+  const dispatch = useDispatch();
+  const [checkPopup,setCheckPopup] = useState(false)
  const {data,totalItems,totalAmount} = useSelector((state)=>state.cart);
  const deliveryCost = 40;
 
@@ -19,7 +22,7 @@ const Cart = () => {
 }, [useSelector(state => state.cart)]); 
 
   return (
-    <>
+    <div className="relative">
       <Navbar />
       <h1 className="text-center text-[25px] font-[500]">My Cart</h1>
       <div className=" cart-page flex flex-row justify-center sm:overflow-x-scroll mx-w-[1280px] my-4">
@@ -81,7 +84,7 @@ const Cart = () => {
           </div>
           <div className="flex flex-row justify-between items-center">
           <p>Discount</p>
-          <h2 className="font-[500]">- 0.0 &#x20B9;</h2>
+          <h2 className="font-[500]">-{totalAmount==0?'0.0':`${totalAmount*0.1}`}&#x20B9;</h2>
           </div>
           <div className="flex flex-row justify-between items-center">
           <p>Dilivery Cost</p>
@@ -91,10 +94,10 @@ const Cart = () => {
           <div className="border-t-2 ">
             <div className="flex flex-row justify-between items-center">
            <h1 className="font-[500] text-[20px] opacity-75">Grand Total</h1>
-           <h1 className="font-[500] text-[20px] opacity-75">{totalItems?`${totalAmount+deliveryCost}`:'0.00'} &#x20B9;</h1>
+           <h1 className="font-[500] text-[20px] opacity-75">{totalItems?`${totalAmount+deliveryCost-totalAmount*0.1}`:'0.00'} &#x20B9;</h1>
            </div>
            <div className="w-full flex flex-col items-center mt-3">
-           <button className=" w-[80%]  outline-none m-auto text-center bg-[#2874F0] py-1 px-2 text-white rounded shadow-[0px_2px_4px_0px_rgba(0,0,0,.2)]">Proceed to Checkout</button>
+           <button className=" w-[80%]  outline-none m-auto text-center bg-[#2874F0] py-1 px-2 text-white rounded shadow-[0px_2px_4px_0px_rgba(0,0,0,.2)]" onClick={()=>setCheckPopup(true)}>Proceed to Checkout</button>
            </div>
           </div>
         </div>
@@ -106,7 +109,21 @@ const Cart = () => {
         </div>
         }
       </div>
-    </>
+      {/* Popup box for checkout ------- */}
+      <div className={`payout-POPUP z-[100] ${checkPopup?'block':'hidden'} transition-all duration-100`}>
+        <div className="flex justify-center items-center w-full h-full">
+            <div className="w-[500px] h-[300px] bg-white rounded flex justify-center items-center flex-col px-10 pt-5 pb-10 ">
+              
+                  <AiFillCheckCircle size={100} color="#2874F0" />
+                   <h1 className="text-[28px] text-center mt-7">Order Successfull</h1>
+                   <h1 className="text-[18px] text-center">Thank you for order.</h1>
+                   <div className=" mt-[30px]">
+                   <button className="py-3 px-8 bg-[#2874F0] rounded text-white" onClick={()=>setCheckPopup(false)}>Close</button>
+                   </div>
+            </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

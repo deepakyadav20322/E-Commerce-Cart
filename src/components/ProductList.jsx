@@ -38,7 +38,7 @@ const ProductList = memo(({item,id,}) => {
             <Link to={'/singleItemInfo'} state= {{itemData:item }} // Pass the item data as state
             >
             <div className='imgBox'>
-            <img src={item.thumbnail} className='mt-5' alt="" />
+            <img src={item.thumbnail} className='mt-5 hover:scale-[1.2] transition-all duration-[400ms]' alt="" />
             </div>
             </Link>
             <p className='productName'>{item.title}</p>
