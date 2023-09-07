@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import Navbar from '../components/Navbar'
 import CategoryList from '../components/CategoryList'
 import { useSelector,useDispatch } from 'react-redux'
-import { fetchProductsByCategory } from '../store/productSlice'
+import { fetchProductsByCategory,fetchProducts } from '../store/productSlice'
 import { STATUSES } from '../store/state'
 import { toast,Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
@@ -14,10 +14,17 @@ const Products = () => {
   const {category ,status:Status} = useSelector((state)=>state.category)
   console.log(category,"kkk")
 
+  useEffect(()=>{
+    return()=>{
+      dispatch(fetchProducts());
+    }
+    
+  },[]);
+
   const {data:cartData}=useSelector((state)=>state.cart);
   const [qty,setQty] = useState(1);
+
   const handleAdd = (product) => {
-       
     const dataAvailable = cartData.some(item => item.id === product.id);
 
     console.log(dataAvailable)
